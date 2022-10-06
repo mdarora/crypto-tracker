@@ -4,7 +4,7 @@ import axios from 'axios';
 import Coin from './components/Coin';
 
 function App() {
-  const apiUrl = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=INR&order=market_cap_desc&per_page=10&page=1&sparkline=false";
+  const apiUrl = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=INR&order=market_cap_desc&per_page=50&page=1&sparkline=false";
 
   const [coins, setCoins] = useState([]);
 
@@ -12,7 +12,6 @@ function App() {
 
     axios.get(apiUrl).then((res)=>{
       setCoins(res.data);
-      console.log(res.data);
     }).catch((err) => console.log(err));
 
   }, []);
