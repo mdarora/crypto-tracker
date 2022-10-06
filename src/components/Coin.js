@@ -8,11 +8,11 @@ const Coin = ({name, image, symbol, price, volume, mktCap, priceChange}) => {
             <img src={image} alt={name + " logo"} /> {name}
         </td>
         <td>{symbol}</td>
-        <td>${price}</td>
-        <td>${volume}</td>
-        {priceChange < 0 ? (<td className='red'>{priceChange}%</td>) : (<td className='green'>{priceChange}%</td>)}
+        <td>${price.toLocaleString()}</td>
+        <td>${volume.toLocaleString()}</td>
+        {priceChange < 0 ? (<td className='red'>{priceChange.toFixed(2)}%</td>) : (<td className='green'>{priceChange.toFixed(2)}%</td>)}
         
-        <td>Mkt Cap: ${mktCap}</td>
+        <td>Mkt Cap: ${mktCap.toLocaleString()}</td>
     </tr>
     </>
   )
