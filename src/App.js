@@ -26,7 +26,7 @@ function App() {
 
   return (
     <>
-    <Header/>
+    <Header currency={{currency, setCurrency}}/>
     <section className="App">
       <div className="container">
         <div className="search">
