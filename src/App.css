@@ -13,19 +13,24 @@ html{
 }
 #root{
   min-height: 100vh;
+  background-color: rgb(35, 35, 35);
 }
 .App, nav{
   color: #fff;
-  background-color: rgb(35, 35, 35);
 }
 nav{
   padding: 2px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   border-bottom: 1px solid gold ;
 }
 nav .logo{
   color: gold;
   font-size: 1.8em;
 }
+
+/* *************************************************** */
 .search{
   padding: 50px 0px;
   text-align: center;
