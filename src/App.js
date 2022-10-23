@@ -7,6 +7,8 @@ function App() {
   const apiUrl = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=USD&order=market_cap_desc&per_page=50&page=1&sparkline=false";
 
   const [coins, setCoins] = useState([]);
+  const [search, setSearch] = useState('');
+
 
   useEffect(()=>{
 
@@ -16,12 +18,16 @@ function App() {
 
   }, []);
 
+  const filteredCoins = coins.filter(coin => {
+    return coin.name.toLowerCase().includes(search.toLowerCase());
+  });
+
   return (
     <section className="App">
       <div className="container">
         <div className="search">
           <h1>Search a currency</h1>
-          <input type="text" placeholder='search' />
+          <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder='search' />
         </div>
 
         <div className="coins">
@@ -37,7 +43,7 @@ function App() {
               </tr>
             </thead>
             <tbody>
-              {coins.map((coin, i) =><Coin key={coin.symbol} name={coin.name} image={coin.image} symbol={coin.symbol.toUpperCase()} price={coin.current_price} volume={coin.total_volume} mktCap={coin.market_cap} priceChange={coin.price_change_percentage_24h} />)} 
+              {filteredCoins.map((coin, i) =><Coin key={coin.symbol} name={coin.name} image={coin.image} symbol={coin.symbol.toUpperCase()} price={coin.current_price} volume={coin.total_volume} mktCap={coin.market_cap} priceChange={coin.price_change_percentage_24h} />)} 
 
             </tbody>
           </table>
