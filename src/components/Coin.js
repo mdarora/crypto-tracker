@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Coin = ({name, image, symbol, price, volume, mktCap, priceChange}) => {
+const Coin = ({name, image, symbol, price, volume, mktCap, priceChange, currencySymbol}) => {
   return (
     <>
     <tr className="coin">
@@ -8,8 +8,8 @@ const Coin = ({name, image, symbol, price, volume, mktCap, priceChange}) => {
             <img src={image} alt={name + " logo"} /> {name}
         </td>
         <td>{symbol}</td>
-        <td>${price.toLocaleString()}</td>
-        <td>${volume.toLocaleString()}</td>
+        <td>{currencySymbol}{price.toLocaleString()}</td>
+        <td>{currencySymbol}{volume.toLocaleString()}</td>
         {priceChange < 0 ? (<td className='red'>{priceChange.toFixed(2)}%</td>) : (<td className='green'>{priceChange.toFixed(2)}%</td>)}
         
         <td>Mkt Cap: ${mktCap.toLocaleString()}</td>

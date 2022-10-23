@@ -6,11 +6,28 @@ import Header from './components/Header';
 
 function App() {
   const [currency, setCurrency] = useState('USD');
+  const [currencySymbol, setCurrencySymbol] = useState('$');
   const apiUrl = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=50&page=1&sparkline=false`;
 
   const [coins, setCoins] = useState([]);
   const [search, setSearch] = useState('');
 
+  useEffect(()=>{
+    switch (currency) {
+      case "USD":
+        setCurrencySymbol('$');
+        break;
+      case "CAD":
+        setCurrencySymbol('$');
+        break;
+      case "INR":
+        setCurrencySymbol('₹');
+        break;
+    
+      default:
+        break;
+    }
+  },[currency])
 
   useEffect(()=>{
 
@@ -47,7 +64,7 @@ function App() {
               </tr>
             </thead>
             <tbody>
-              {filteredCoins.map((coin, i) =><Coin key={coin.symbol} name={coin.name} image={coin.image} symbol={coin.symbol.toUpperCase()} price={coin.current_price} volume={coin.total_volume} mktCap={coin.market_cap} priceChange={coin.price_change_percentage_24h} />)} 
+              {filteredCoins.map((coin, i) =><Coin key={coin.symbol} name={coin.name} image={coin.image} symbol={coin.symbol.toUpperCase()} price={coin.current_price} currencySymbol={currencySymbol} volume={coin.total_volume} mktCap={coin.market_cap} priceChange={coin.price_change_percentage_24h} />)} 
 
             </tbody>
           </table>
