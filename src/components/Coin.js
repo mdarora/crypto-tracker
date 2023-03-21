@@ -12,7 +12,7 @@ const Coin = ({name, image, symbol, price, volume, mktCap, priceChange, currency
         <td>{currencySymbol}{volume.toLocaleString()}</td>
         {priceChange < 0 ? (<td className='red'>{priceChange.toFixed(2)}%</td>) : (<td className='green'>{priceChange.toFixed(2)}%</td>)}
         
-        <td>Mkt Cap: ${mktCap.toLocaleString()}</td>
+        <td>Mkt Cap: {currencySymbol}{mktCap.toLocaleString()}</td>
     </tr>
     </>
   )
